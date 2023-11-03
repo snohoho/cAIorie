@@ -20,6 +20,7 @@
         android:layout_width="87dp"
         android:layout_height="50dp"
         android:text="@string/exText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/exText"
-        tools:layout_editor_absoluteY="46dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
