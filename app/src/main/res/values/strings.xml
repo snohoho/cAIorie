@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">cAIorie</string>
     <string name="exText">Example Text</string>
+    <string name="mealPlanText">Breakfast: \n\nLunch: \n\nDinner:</string>
 </resources>
