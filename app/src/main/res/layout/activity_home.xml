@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/EditTextAskDum"
+        android:layout_width="271dp"
+        android:layout_height="72dp"
+        android:ems="10"
+        android:hint="  Ask Dummy!"
+        android:inputType="text"
+        app:guidelineUseRtl="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <Button
+        android:id="@+id/ButtonHome"
+        android:layout_width="125dp"
+        android:layout_height="53dp"
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784" />
+
+    <TextView
+        android:id="@+id/TextViewAskDum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat with Dummy!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609" />
+
+    <Button
+        android:id="@+id/ButtonFreqQuestions"
+        android:layout_width="255dp"
+        android:layout_height="61dp"
+        android:text="Frequently Asked Questions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <ImageView
+        android:id="@+id/ImageViewDummy"
+        android:layout_width="321dp"
+        android:layout_height="324dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.688"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/dumbell_app_clipart" />
+
+    <Button
+        android:id="@+id/ButtonSampQuest"
+        android:layout_width="253dp"
+        android:layout_height="67dp"
+        android:text="Sample Nutrition Questions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
+
+    <ImageButton
+        android:id="@+id/ImageButtonMealPlan"
+        android:layout_width="89dp"
+        android:layout_height="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995"
+        app:srcCompat="@drawable/triangle_removebg_preview" />
+
+    <ImageButton
+        android:id="@+id/ImageButtonMealinput"
+        android:layout_width="89dp"
+        android:layout_height="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995"
+        app:srcCompat="@drawable/triangle_removebg_preview" />
+
+    <ImageButton
+        android:id="@+id/ImageButtonSettings"
+        android:layout_width="89dp"
+        android:layout_height="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.779"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995"
+        app:srcCompat="@drawable/triangle_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/imageViewTriangle3"
+        android:layout_width="62dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonSettings"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonSettings"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957"
+        app:srcCompat="@drawable/_4883" />
+
+    <ImageView
+        android:id="@+id/ImageViewTriangle2"
+        android:layout_width="62dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957"
+        app:srcCompat="@drawable/_4883" />
+
+    <ImageView
+        android:id="@+id/ImageViewTriangle1"
+        android:layout_width="62dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/ImageButtonMealinput"
+        app:layout_constraintTop_toTopOf="@+id/ImageButtonMealinput"
+        app:srcCompat="@drawable/_4883" />
+
+    <TextView
+        android:id="@+id/TextViewMealinput"
+        android:layout_width="66dp"
+        android:layout_height="18dp"
+        android:text="Meal Input"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="@+id/ImageButtonMealinput"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <TextView
+        android:id="@+id/TextViewSettings"
+        android:layout_width="66dp"
+        android:layout_height="18dp"
+        android:text="Settings"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonSettings"
+        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <TextView
+        android:id="@+id/ImageViewMealPlan"
+        android:layout_width="66dp"
+        android:layout_height="18dp"
+        android:text="Meal Plan"
+        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
