@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CAIorie"
         tools:targetApi="31">
         <activity
+            android:name=".DaysActivity"
+            android:exported="false" />
+        <activity
             android:name=".FormatSpecification"
             android:exported="true">
             <intent-filter>
