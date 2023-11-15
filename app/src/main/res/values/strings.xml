@@ -2,4 +2,18 @@
     <string name="app_name">cAIorie</string>
     <string name="exText">Example Text</string>
     <string name="mealPlanText">Breakfast: \n\nLunch: \n\nDinner:</string>
+    <string-array name="Days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string-array name="Meals">
+        <item>Meal 1</item>
+        <item>Meal 2</item>
+        <item>Meal 3</item>
+    </string-array>
 </resources>

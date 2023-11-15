@@ -7,6 +7,7 @@
     tools:context=".FormatSpecification">
 
     <TextView
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -18,8 +19,10 @@
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="87dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="175dp"
         android:text="@string/exText"
+        app:layout_constraintBottom_toTopOf="@+id/To_MI_ScreenButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,5 +35,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <Button
+        android:id="@+id/To_MI_ScreenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="458dp"
+        android:text="Go to Meal Input Screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
