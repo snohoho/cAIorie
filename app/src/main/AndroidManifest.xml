@@ -13,7 +13,9 @@
         android:theme="@style/Theme.CAIorie"
         tools:targetApi="31">
         <activity
+
             android:name=".MealInputActivity"
+
             android:exported="false" />
         <activity
             android:name=".FormatSpecification"
