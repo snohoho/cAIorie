@@ -1,13 +1,15 @@
 package edu.floridapoly.mobiledeviceapps.fall23.caiorie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +27,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private Button sampleQsButton;
+    private ImageButton inputButton;
+    private ImageButton planButton;
+    private ImageButton profileButton;
+
     String responseText;
     String parsedText;
     StringBuffer response;
@@ -32,20 +39,58 @@ public class HomeActivity extends AppCompatActivity {
     String apiKey = "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";
     String model = "gpt-3.5-turbo-1106";
     String urlStr = "https://api.openai.com/v1/chat/completions";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        sampleQsButton = findViewById(R.id.buttonSampQuest);
+        inputButton = findViewById(R.id.imageButtonMealinput);
+        planButton = findViewById(R.id.imageButtonMealPlan);
+        profileButton = findViewById(R.id.imageButtonProfile);
+
         final Button buttonSendToAI = (Button) findViewById(R.id.buttonSendToAI);
-        EditText editText = findViewById(R.id.EditTextAskDum);
+        EditText editText = findViewById(R.id.editTextAskDum);
         String initialPrompt = "";
         editText.setText(initialPrompt);
 
+        sampleQsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Gives a pop up that includes a set of sample questions. " +
+                        "Questions can be clicked by the user to ask them to Dummy.",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        inputButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MealInputActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        planButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MealPlanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getBaseContext(), "Opens profile page",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         buttonSendToAI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                EditText editText = findViewById(R.id.EditTextAskDum);
+                EditText editText = findViewById(R.id.editTextAskDum);
                 String prompt = editText.getText().toString();
                 Log.i("WebService", "WebService URL: " + prompt);
                 // Use AsyncTask execute Method To Prevent ANR Problem
