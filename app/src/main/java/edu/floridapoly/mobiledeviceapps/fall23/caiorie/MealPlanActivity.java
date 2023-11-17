@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.content.SharedPreferences;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,28 +24,58 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 public class MealPlanActivity extends AppCompatActivity {
+    private Button saveButton;
     String responseText;
     String parsedText;
+    String[] parsedDay = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+
+    String changedView;
     StringBuffer response;
     URL url;
     String apiKey = "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";
     String model = "gpt-3.5-turbo-1106";
     String urlStr = "https://api.openai.com/v1/chat/completions";
-
-    String userInfo = "weight:180lbs, age:25, height:5'10, weight goal:160lbs, dietary restrictions:nut allergy";
+    SharedPreferences sp;
+    String age;
+    String height;
+    String weight;
+    String dietaryRestriction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mealplan_activity);
+        setContentView(R.layout.activity_mealplan);
 
-        final Button buttonSendToAI = (Button) findViewById(R.id.generatePlanBtn);
+        saveButton = findViewById(R.id.buttonSavePlan);
+        final Button buttonSendToAI = (Button) findViewById(R.id.buttonGeneratePlan);
 
+        /*
+        sp = getApplicationContext().getSharedPreferences("userInputs", Context.MODE_PRIVATE);
+        sp.getString("age","");
+        sp.getString("height","");
+        sp.getString("weight","");
+        sp.getString("dietaryRestriction","");
+        */
+
+        age = "25";
+        height = "5'10";
+        weight = "180 lbs";
+        dietaryRestriction = "Nuts";
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Saves the AI generated meal plan.",Toast.LENGTH_LONG).show();
+            }
+        });
         buttonSendToAI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                TextView textView = findViewById(R.id.textView9);
-                String prompt = "generate a meal that a person with these features can eat: " + userInfo;
+                String prompt = "I am " + age +
+                        " years old, and have a height of " + height +
+                        " , and currently weigh " + weight +
+                        ". I cannot eat " + dietaryRestriction +
+                        ". Generate a meal plan for the week containing 3 meals per day, Monday through Sunday. Output in JSON format as meal_plan";
                 Log.i("WebService", "WebService URL: " + prompt);
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new MealPlanActivity.GetServerData().execute(prompt);
@@ -53,7 +84,6 @@ public class MealPlanActivity extends AppCompatActivity {
     }
 
     class GetServerData extends AsyncTask {
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -68,9 +98,34 @@ public class MealPlanActivity extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
 
-            TextView textResponse = findViewById(R.id.textView9);
+            TextView textResponse = findViewById(R.id.textViewMonday);
             textResponse.setText(responseText);
-            TextView textParsed = findViewById(R.id.textView9);
+
+            TextView textParsed = findViewById(R.id.textViewMonday);;
+            /*
+            if(changedView == "Monday") {
+                textParsed = findViewById(R.id.textViewMonday);
+            }
+            else if(changedView == "Tuesday") {
+                textParsed = findViewById(R.id.textViewTuesday);
+            }
+            else if(changedView == "Wednesday") {
+                textParsed = findViewById(R.id.textViewWednesday);
+            }
+            else if(changedView == "Thursday") {
+                textParsed = findViewById(R.id.textViewThursday);
+            }
+            else if(changedView == "Friday") {
+                textParsed = findViewById(R.id.textViewThursday);
+            }
+            else if(changedView == "Saturday") {
+                textParsed = findViewById(R.id.textViewSaturday);
+            }
+            else {
+                textParsed = findViewById(R.id.textViewSunday);
+            }
+             */
+
             textParsed.setText(parsedText);
         }
     }
@@ -110,7 +165,8 @@ public class MealPlanActivity extends AppCompatActivity {
                 br.close();
                 responseText = response.toString();
                 Log.i("WebService", responseText);
-                parsedText = extractMessageFromJSONResponse(response.toString());
+
+                parsedText = extractMessageFromJSONResponse(responseText);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,14 +174,26 @@ public class MealPlanActivity extends AppCompatActivity {
         return null;
     }
 
-    public static String extractMessageFromJSONResponse(String response) {
-        String contentStr = "";
+    public String extractMessageFromJSONResponse(String response) {
+        String contentStr = "Generating...";
         try {
             JSONObject jsonResponse = new JSONObject(response);
             JSONArray jsonArrayList = jsonResponse.getJSONArray("choices");
             JSONObject firstItem = jsonArrayList.getJSONObject(0);
-            JSONObject message  = firstItem.getJSONObject("message");
-            contentStr = message.getString("content");
+            JSONObject message = firstItem.getJSONObject("message");
+            String content = message.getString("content");
+
+            JSONObject mealPlan = new JSONObject(content);
+            JSONObject planStart = mealPlan.getJSONObject("meal_plan");
+
+            JSONObject day = planStart.getJSONObject("Monday");
+            String breakfast = day.getString("breakfast");
+            String lunch = day.getString("lunch");
+            String dinner = day.getString("dinner");
+
+            contentStr = "Breakfast: " + breakfast + "\n\n" +
+                    "Lunch: " + lunch + "\n\n" +
+                    "Dinner: " + dinner;
 
         } catch (JSONException e) {
             e.printStackTrace();

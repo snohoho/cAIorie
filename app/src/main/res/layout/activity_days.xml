@@ -11,8 +11,8 @@
         android:id="@+id/mealPlanHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MEALS EATEN"
-        android:textSize="55sp" />
+        android:text="@string/daysText"
+        android:textSize="69sp" />
 
 
 <GridLayout

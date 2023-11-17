@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MealPlanActivity">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -15,12 +14,26 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.195"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="177dp"
+        android:layout_height="197dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/dumbell_app_clipart" />
 
     <Button
-        android:id="@+id/savePlanBtn"
+        android:id="@+id/buttonSavePlan"
         android:layout_width="190dp"
         android:layout_height="56dp"
         android:text="Save Plan"
@@ -32,7 +45,7 @@
         app:layout_constraintVertical_bias="0.893" />
 
     <Button
-        android:id="@+id/generatePlanBtn"
+        android:id="@+id/buttonGeneratePlan"
         android:layout_width="190dp"
         android:layout_height="52dp"
         android:text="Generate New Plan"
@@ -44,9 +57,8 @@
         app:layout_constraintVertical_bias="0.978" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="479dp"
+        android:layout_width="306dp"
+        android:layout_height="395dp"
         android:layout_marginTop="32dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,8 +91,8 @@
                     app:layout_constraintVertical_bias="0.009" />
 
                 <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewMonday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -114,8 +126,8 @@
                     app:layout_constraintVertical_bias="0.153" />
 
                 <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewTuesday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -148,8 +160,8 @@
                     app:layout_constraintVertical_bias="0.313" />
 
                 <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewWednesday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -183,8 +195,8 @@
                     app:layout_constraintVertical_bias="0.45" />
 
                 <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewThursday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -218,8 +230,8 @@
                     app:layout_constraintVertical_bias="0.58" />
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewFriday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -253,8 +265,8 @@
                     app:layout_constraintVertical_bias="0.733" />
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewSaturday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -288,8 +300,8 @@
                     app:layout_constraintVertical_bias="0.884" />
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewSunday"
+                    android:layout_width="229dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border"
                     android:paddingLeft="5dp"
@@ -308,16 +320,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="129dp"
-        android:layout_height="111dp"
-        android:src="@drawable/dumbell_app_clipart_cropped"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

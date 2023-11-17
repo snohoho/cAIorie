@@ -1,6 +1,33 @@
 <resources>
     <string name="app_name">cAIorie</string>
+
     <string name="exText">Example Text</string>
+
+    <!--strings for days-->
+    <string name="daysText">MEAL PLAN</string>
+    <string name="s"></string>
+
+    <!--strings for home -->
+    <string name="aiResponseText">Never Fear!\nDummy is here to answer all your nutrition questions!</string>
+    <string name="askDummyHint">  Ask Dummy!</string>
+    <string name="sampleQuestionsText">Sample Questions</string>
+    <string name="sendQuestionsText">Send</string>
+    <string name="mealPlanBtText">Meal Plan</string>
+    <string name="mealInBtText">Meal Input</string>
+    <string name="profileText">Profile</string>
+
+    <!--strings for meal input-->
+    <string name="enterMealText">Enter Your Meal here:</string>
+    <string name="mealInDayText">Day:</string>
+    <string name="mealInNumberText">Meal Number:</string>
+    <string name="mealInFoodText">Food:</string>
+    <string name="mealInFoodHint">Enter Food Here.</string>
+    <string name="mealInCaloriesText">Calories:</string>
+    <string name="mealInCaloriesHint">Enter Calories Here.</string>
+    <string name="mealInAISggText">AI Suggestion</string>
+    <string name="mealInSaveText">Save</string>
+
+    <!--strings for meal plan-->
     <string name="mealPlanText">Breakfast: \n\nLunch: \n\nDinner:</string>
     <string-array name="Days">
         <item>Monday</item>
@@ -16,4 +43,29 @@
         <item>Meal 2</item>
         <item>Meal 3</item>
     </string-array>
+
+    <!--strings for profile-->
+    <string name="profileInfoText">Profile Information</string>
+    <string name="nameText">Name:</string>
+    <string name="firstNameIn">John</string>
+    <string name="lastNameIn">Doverman</string>
+    <string name="usernameText">Username:</string>
+    <string name="usernameIn">BenD123</string>
+    <string name="passwordText">Password:</string>
+    <string name="passwordIn">**************</string>
+    <string name="ageText">Age</string>
+    <string name="ageIn">25</string>
+    <string name="emailText">Email:</string>
+    <string name="emailIn">JohnDoverman@gmail.com</string>
+    <string name="heightText">Height:</string>
+    <string name="heightIn">5\'10</string>
+    <string name="weightText">Current Weight:</string>
+    <string name="weightIn">180 lbs</string>
+    <string name="weightGoalText">Current Weight Goal:</string>
+    <string name="weightGoalIn">160 lbs</string>
+    <string name="dietaryRestrictionText">Dietary Restrictions:</string>
+    <string name="dietaryRestrictionIn">Nuts</string>
+    <string name="logoutText">Logout</string>
+    <string name="homeBtText">Home</string>
+
 </resources>
