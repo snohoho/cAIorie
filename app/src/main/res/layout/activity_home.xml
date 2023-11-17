@@ -155,7 +155,7 @@
         android:id="@+id/ImageViewMealPlan"
         android:layout_width="66dp"
         android:layout_height="18dp"
-        android:text="@string/mealInBtText"
+        android:text="@string/mealPlanBtText"
         app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
         app:layout_constraintEnd_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintHorizontal_bias="0.521"

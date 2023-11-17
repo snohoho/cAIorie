@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.SharedPreferences;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
-class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     private Button homeButton;
     private Button logoutButton;
     SharedPreferences sp;
@@ -31,6 +29,7 @@ class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        /*
         ageView = findViewById(R.id.birthdayPlaceholder);
         age = ageView.getText().toString();
         heightView = findViewById(R.id.heightPlaceholder);
@@ -47,6 +46,7 @@ class ProfileActivity extends AppCompatActivity {
         editor.putString("weight",weight);
         editor.putString("dietaryRestriction",dietaryRestriction);
         editor.commit();
+         */
 
         homeButton = findViewById(R.id.buttonHome);
         logoutButton = findViewById(R.id.buttonLogout);

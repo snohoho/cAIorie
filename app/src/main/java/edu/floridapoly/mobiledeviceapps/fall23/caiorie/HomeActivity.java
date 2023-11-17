@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         inputButton = findViewById(R.id.imageButtonMealinput);
         planButton = findViewById(R.id.imageButtonMealPlan);
         profileButton = findViewById(R.id.imageButtonProfile);
+
         final Button buttonSendToAI = (Button) findViewById(R.id.buttonSendToAI);
         EditText editText = findViewById(R.id.editTextAskDum);
         String initialPrompt = "";
@@ -81,6 +82,7 @@ public class HomeActivity extends AppCompatActivity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(getBaseContext(), "Opens profile page",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
