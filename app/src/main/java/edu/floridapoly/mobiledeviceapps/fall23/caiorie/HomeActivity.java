@@ -1,12 +1,14 @@
 package edu.floridapoly.mobiledeviceapps.fall23.caiorie;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -42,6 +44,9 @@ public class HomeActivity extends AppCompatActivity {
         String initialPrompt = "";
         editText.setText(initialPrompt);
 
+        final ImageButton mealPlanScreen = (ImageButton) findViewById(R.id.ImageButtonMealPlan);
+        final ImageButton mealInputScreen = (ImageButton) findViewById(R.id.ImageButtonMealinput);
+
         buttonSendToAI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -50,6 +55,23 @@ public class HomeActivity extends AppCompatActivity {
                 Log.i("WebService", "WebService URL: " + prompt);
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new GetServerData().execute(prompt);
+            }
+
+        });
+
+        mealPlanScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, MealPlanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mealInputScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, MealInputActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -135,4 +157,6 @@ public class HomeActivity extends AppCompatActivity {
 
         return contentStr;
     }
+
+
 }

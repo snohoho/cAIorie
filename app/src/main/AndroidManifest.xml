@@ -20,6 +20,11 @@
             android:name=".MealInputActivity"
             android:exported="false" />
         <activity
+
+            android:name=".MealPlanActivity"
+
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
