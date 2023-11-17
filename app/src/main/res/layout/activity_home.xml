@@ -7,11 +7,11 @@
     tools:context=".HomeActivity">
 
     <EditText
-        android:id="@+id/EditTextAskDum"
+        android:id="@+id/editTextAskDum"
         android:layout_width="270dp"
         android:layout_height="50dp"
         android:ems="10"
-        android:hint="  Ask Dummy!"
+        android:hint="@string/askDummyHint"
         android:inputType="text"
         app:guidelineUseRtl="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
         android:id="@+id/buttonSendToAI"
         android:layout_width="125dp"
         android:layout_height="53dp"
-        android:text="Send"
+        android:text="@string/sendQuestionsText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.755"
@@ -45,10 +45,10 @@
         app:srcCompat="@drawable/dumbell_app_clipart" />
 
     <Button
-        android:id="@+id/ButtonSampQuest"
+        android:id="@+id/buttonSampQuest"
         android:layout_width="125dp"
         android:layout_height="53dp"
-        android:text="Sample Questions"
+        android:text="@string/sampleQuestionsText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.258"
@@ -57,7 +57,7 @@
         app:layout_constraintVertical_bias="0.852" />
 
     <ImageButton
-        android:id="@+id/ImageButtonMealPlan"
+        android:id="@+id/imageButtonMealPlan"
         android:layout_width="89dp"
         android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
         app:srcCompat="@drawable/triangle_removebg_preview" />
 
     <ImageButton
-        android:id="@+id/ImageButtonMealinput"
+        android:id="@+id/imageButtonMealinput"
         android:layout_width="89dp"
         android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +81,7 @@
         app:srcCompat="@drawable/triangle_removebg_preview" />
 
     <ImageButton
-        android:id="@+id/ImageButtonSettings"
+        android:id="@+id/imageButtonProfile"
         android:layout_width="89dp"
         android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,10 +96,10 @@
         android:id="@+id/imageViewTriangle3"
         android:layout_width="62dp"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonSettings"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonSettings"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonProfile"
         app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/_4883" />
@@ -108,10 +108,10 @@
         android:id="@+id/ImageViewTriangle2"
         android:layout_width="62dp"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealPlan"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealPlan"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonMealinput"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/_4883" />
@@ -121,33 +121,33 @@
         android:layout_width="62dp"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealinput"
         app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="@+id/ImageButtonMealinput"
-        app:layout_constraintTop_toTopOf="@+id/ImageButtonMealinput"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonMealinput"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonMealinput"
         app:srcCompat="@drawable/_4883" />
 
     <TextView
         android:id="@+id/TextViewMealinput"
         android:layout_width="66dp"
         android:layout_height="18dp"
-        android:text="Meal Input"
-        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealinput"
+        android:text="@string/mealInBtText"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealinput"
         app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toStartOf="@+id/ImageButtonMealinput"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonMealinput"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />
 
     <TextView
-        android:id="@+id/TextViewSettings"
+        android:id="@+id/TextViewProfile"
         android:layout_width="66dp"
         android:layout_height="18dp"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonSettings"
+        android:text="@string/profileText"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonProfile"
         app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealPlan"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />
 
@@ -155,11 +155,11 @@
         android:id="@+id/ImageViewMealPlan"
         android:layout_width="66dp"
         android:layout_height="18dp"
-        android:text="Meal Plan"
-        app:layout_constraintBottom_toBottomOf="@+id/ImageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/ImageButtonMealPlan"
+        android:text="@string/mealInBtText"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
+        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toEndOf="@+id/ImageButtonMealinput"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonMealinput"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.984" />
 
@@ -182,8 +182,8 @@
                 android:id="@+id/aiResponse"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="40sp"
-                android:text="Never Fear!\nDummy is here to answer all your nutrition questions!" />
+                android:text="@string/aiResponseText"
+                android:textSize="40sp" />
         </LinearLayout>
     </ScrollView>
 

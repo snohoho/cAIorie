@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    
-
+    tools:context=".MealPlanActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -35,7 +33,7 @@
         app:srcCompat="@drawable/dumbell_app_clipart" />
 
     <Button
-        android:id="@+id/savePlanBtn"
+        android:id="@+id/buttonSavePlan"
         android:layout_width="190dp"
         android:layout_height="56dp"
         android:text="Save Plan"
@@ -47,7 +45,7 @@
         app:layout_constraintVertical_bias="0.893" />
 
     <Button
-        android:id="@+id/generatePlanBtn"
+        android:id="@+id/buttonGeneratePlan"
         android:layout_width="190dp"
         android:layout_height="52dp"
         android:text="Generate New Plan"
