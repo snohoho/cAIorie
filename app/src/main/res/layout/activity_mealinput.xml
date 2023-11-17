@@ -94,7 +94,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/mealInFoodHint"
+        android:hint="@string/mealInFoodHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.793"
@@ -108,7 +108,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/mealInCaloriesHint"
+        android:hint="@string/mealInCaloriesHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.793"
@@ -126,7 +126,8 @@
         app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.762"
+        android:onClick="onSaveButtonClicked" />
 
     <Button
         android:id="@+id/buttonAskAI"
@@ -152,7 +153,7 @@
         app:layout_constraintVertical_bias="0.312" />
 
     <Spinner
-        android:id="@+id/Mealspinner"
+        android:id="@+id/spinnerMeals"
         android:layout_width="166dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
