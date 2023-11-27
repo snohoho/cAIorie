@@ -53,13 +53,16 @@ public class MealInputActivity extends AppCompatActivity implements AdapterView.
 
             db.insertData(food, calories, day, mealNumber);
             Toast.makeText(this, "Meal Entered.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, DaysActivity.class);
-            startActivity(intent);
         }
         catch(RuntimeException e){
             Toast.makeText(this, "You must fill out all fields in order to proceed.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void onShowDaysButtonClicked(View view){
+        Intent intent = new Intent(this, DaysActivity.class);
+        startActivity(intent);
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
