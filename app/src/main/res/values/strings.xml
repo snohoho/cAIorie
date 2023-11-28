@@ -25,6 +25,7 @@
     <string name="mealInCaloriesText">Calories:</string>
     <string name="mealInCaloriesHint">Enter Calories Here.</string>
     <string name="mealInAISggText">AI Suggestion</string>
+    <string name="displayDaysActivityText">Show Weekdays</string>
     <string name="mealInSaveText">Save</string>
 
     <!--strings for meal plan-->
@@ -39,9 +40,9 @@
         <item>Sunday</item>
     </string-array>
     <string-array name="Meals">
-        <item>Meal 1</item>
-        <item>Meal 2</item>
-        <item>Meal 3</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <!--strings for profile-->

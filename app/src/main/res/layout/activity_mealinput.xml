@@ -93,8 +93,8 @@
         android:layout_width="188dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint='@string/mealInFoodHint'
         android:inputType="text"
+        android:hint="@string/mealInFoodHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.793"
@@ -107,8 +107,8 @@
         android:layout_width="188dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="@string/mealInCaloriesHint"
         android:inputType="text"
+        android:hint="@string/mealInCaloriesHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.793"
@@ -126,16 +126,18 @@
         app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.762"
+        android:onClick="onSaveButtonClicked" />
 
     <Button
-        android:id="@+id/buttonAskAI"
+        android:id="@+id/buttonShowDays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mealInAISggText"
+        android:onClick="onShowDaysButtonClicked"
+        android:text="@string/displayDaysActivityText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.762" />
@@ -152,7 +154,7 @@
         app:layout_constraintVertical_bias="0.312" />
 
     <Spinner
-        android:id="@+id/Mealspinner"
+        android:id="@+id/spinnerMeals"
         android:layout_width="166dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
