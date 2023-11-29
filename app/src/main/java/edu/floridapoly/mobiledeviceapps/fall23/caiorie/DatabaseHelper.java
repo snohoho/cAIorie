@@ -42,30 +42,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String food, int calories, String day, int mealNumber) {
+    public boolean insertData(String food, int calories, String day, int meal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, day);
         contentValues.put(COL_2, food);
         contentValues.put(COL_3, calories);
-        contentValues.put(COL_4, mealNumber);
+        contentValues.put(COL_4, meal);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }
 
-    public List<String> getMondayFood(){
+    public List<String> getAllFood(String day){
         ArrayList<String> foods = new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String selectQuery = "SELECT * FROM Meal_table WHERE DAY='Monday'";
+        String selectQuery = "SELECT * FROM Meal_table WHERE DAY='" + day + "'";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if(cursor.moveToFirst()){
             do{
-                String city = cursor.getString(cursor.getColumnIndexOrThrow("food"));
+                String food = cursor.getString(cursor.getColumnIndexOrThrow("food"));
+                int cal = cursor.getInt(cursor.getColumnIndexOrThrow("calories"));
+                int number = cursor.getInt(cursor.getColumnIndexOrThrow("meal"));
 
-                String displayFood = city;
+                String displayFood = number + ". " + food + " - " + cal + " calories";
                 foods.add(displayFood);
             }while(cursor.moveToNext());
         }
@@ -73,5 +75,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return foods;
+    }
+
+    public int getTotalCalories(String day){
+        int totalCal = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String selectQuery = "SELECT * FROM Meal_table WHERE DAY='" + day + "'";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int cal = cursor.getInt(cursor.getColumnIndexOrThrow("calories"));
+
+                totalCal = totalCal + cal;
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return totalCal;
+
     }
 }

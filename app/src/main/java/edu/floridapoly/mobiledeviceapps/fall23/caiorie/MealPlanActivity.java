@@ -1,5 +1,6 @@
 package edu.floridapoly.mobiledeviceapps.fall23.caiorie;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,15 +28,14 @@ public class MealPlanActivity extends AppCompatActivity {
     private Button saveButton;
     String responseText;
     String parsedText;
-    String[] parsedDay = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 
-    String changedView;
     StringBuffer response;
     URL url;
     String apiKey = "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";
     String model = "gpt-3.5-turbo-1106";
     String urlStr = "https://api.openai.com/v1/chat/completions";
-    SharedPreferences sp;
+    SharedPreferences spMealPlanIn;
+    SharedPreferences spMealPlanOut;
     String age;
     String height;
     String weight;
@@ -46,15 +46,36 @@ public class MealPlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mealplan);
 
+        spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay0", Context.MODE_PRIVATE);
+
+        //initializes text views with previous plan if meal plan currently exists
+        TextView changeText[] =
+                {findViewById(R.id.textViewMonday),
+                        findViewById(R.id.textViewTuesday),
+                        findViewById(R.id.textViewWednesday),
+                        findViewById(R.id.textViewThursday),
+                        findViewById(R.id.textViewFriday),
+                        findViewById(R.id.textViewSaturday),
+                        findViewById(R.id.textViewSunday)};
+        if(spMealPlanOut.getInt("pressed",0) == 1) {
+            for(int i=0; i<changeText.length; i++) {
+                spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay" + i, Context.MODE_PRIVATE);
+                parsedText = "Breakfast\n" + spMealPlanOut.getString("breakfast","") +
+                        "\n\nLunch\n" + spMealPlanOut.getString("lunch","") +
+                        "\n\nDinner\n" + spMealPlanOut.getString("dinner","");
+                changeText[i].setText(parsedText);
+            }
+        }
+
         saveButton = findViewById(R.id.buttonSavePlan);
         final Button buttonSendToAI = (Button) findViewById(R.id.buttonGeneratePlan);
 
         /*
-        sp = getApplicationContext().getSharedPreferences("userInputs", Context.MODE_PRIVATE);
-        sp.getString("age","");
-        sp.getString("height","");
-        sp.getString("weight","");
-        sp.getString("dietaryRestriction","");
+        spMealPlanIn = getApplicationContext().getSharedPreferences("userInputs", Context.MODE_PRIVATE);
+        spMealPlanIn.getString("age","");
+        spMealPlanIn.getString("height","");
+        spMealPlanIn.getString("weight","");
+        spMealPlanIn.getString("dietaryRestriction","");
         */
 
         age = "25";
@@ -68,6 +89,7 @@ public class MealPlanActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Saves the AI generated meal plan.",Toast.LENGTH_LONG).show();
             }
         });
+
         buttonSendToAI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -98,40 +120,27 @@ public class MealPlanActivity extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
 
-            TextView textResponse = findViewById(R.id.textViewMonday);
-            textResponse.setText(responseText);
+            //takes meal plan saved in shared prefs and changes textViews
+            TextView changeText[] =
+                    {findViewById(R.id.textViewMonday),
+                    findViewById(R.id.textViewTuesday),
+                    findViewById(R.id.textViewWednesday),
+                    findViewById(R.id.textViewThursday),
+                    findViewById(R.id.textViewFriday),
+                    findViewById(R.id.textViewSaturday),
+                    findViewById(R.id.textViewSunday)};
 
-            TextView textParsed = findViewById(R.id.textViewMonday);;
-            /*
-            if(changedView == "Monday") {
-                textParsed = findViewById(R.id.textViewMonday);
+            for(int i=0; i<changeText.length; i++) {
+                spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay" + i, Context.MODE_PRIVATE);
+                parsedText = "Breakfast\n" + spMealPlanOut.getString("breakfast","") +
+                        "\n\nLunch\n" + spMealPlanOut.getString("lunch","") +
+                        "\n\nDinner\n" + spMealPlanOut.getString("dinner","");
+                changeText[i].setText(parsedText);
             }
-            else if(changedView == "Tuesday") {
-                textParsed = findViewById(R.id.textViewTuesday);
-            }
-            else if(changedView == "Wednesday") {
-                textParsed = findViewById(R.id.textViewWednesday);
-            }
-            else if(changedView == "Thursday") {
-                textParsed = findViewById(R.id.textViewThursday);
-            }
-            else if(changedView == "Friday") {
-                textParsed = findViewById(R.id.textViewThursday);
-            }
-            else if(changedView == "Saturday") {
-                textParsed = findViewById(R.id.textViewSaturday);
-            }
-            else {
-                textParsed = findViewById(R.id.textViewSunday);
-            }
-             */
-
-            textParsed.setText(parsedText);
         }
     }
 
     protected String getWebServiceResponseData(String prompt) {
-
         try {
             url = new URL(urlStr);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -152,6 +161,7 @@ public class MealPlanActivity extends AppCompatActivity {
             int responseCode = connection.getResponseCode();
 
             Log.d("WebService", "Response code: " + responseCode);
+
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 // Reading response from input Stream
                 BufferedReader br = new BufferedReader(
@@ -163,42 +173,52 @@ public class MealPlanActivity extends AppCompatActivity {
                     response.append(output);
                 }
                 br.close();
+
                 responseText = response.toString();
                 Log.i("WebService", responseText);
 
-                parsedText = extractMessageFromJSONResponse(responseText);
+                //stores meal plan into shared prefs
+                JSONObject jsonResponse = new JSONObject(responseText);
+                JSONArray jsonArrayList = jsonResponse.getJSONArray("choices");
+                JSONObject firstItem = jsonArrayList.getJSONObject(0);
+                JSONObject message = firstItem.getJSONObject("message");
+                String content = message.getString("content");
+
+                JSONObject mealPlan = new JSONObject(content);
+                JSONObject planStart = mealPlan.getJSONObject("meal_plan");
+
+                JSONObject[] days =
+                        {planStart.getJSONObject("Monday"),
+                        planStart.getJSONObject("Tuesday"),
+                        planStart.getJSONObject("Wednesday"),
+                        planStart.getJSONObject("Thursday"),
+                        planStart.getJSONObject("Friday"),
+                        planStart.getJSONObject("Saturday"),
+                        planStart.getJSONObject("Sunday")};
+
+                spMealPlanOut = getSharedPreferences("mealPlanOut", Context.MODE_PRIVATE);
+                for(int i=0; i<days.length; i++) {
+                    spMealPlanOut = getSharedPreferences("mealPlanOutDay" + i, Context.MODE_PRIVATE);
+
+                    String breakfast = days[i].getString("breakfast");
+                    String lunch = days[i].getString("lunch");
+                    String dinner = days[i].getString("dinner");
+
+                    Log.d("responseDebug", "Breakfast: " + breakfast +
+                            "\nLunch: " + lunch +
+                            "\nDinner: " + dinner);
+
+                    SharedPreferences.Editor editor = spMealPlanOut.edit();
+                    editor.putString("breakfast",breakfast);
+                    editor.putString("lunch",lunch);
+                    editor.putString("dinner",dinner);
+                    editor.putInt("pressed",1);
+                    editor.apply();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public String extractMessageFromJSONResponse(String response) {
-        String contentStr = "Generating...";
-        try {
-            JSONObject jsonResponse = new JSONObject(response);
-            JSONArray jsonArrayList = jsonResponse.getJSONArray("choices");
-            JSONObject firstItem = jsonArrayList.getJSONObject(0);
-            JSONObject message = firstItem.getJSONObject("message");
-            String content = message.getString("content");
-
-            JSONObject mealPlan = new JSONObject(content);
-            JSONObject planStart = mealPlan.getJSONObject("meal_plan");
-
-            JSONObject day = planStart.getJSONObject("Monday");
-            String breakfast = day.getString("breakfast");
-            String lunch = day.getString("lunch");
-            String dinner = day.getString("dinner");
-
-            contentStr = "Breakfast: " + breakfast + "\n\n" +
-                    "Lunch: " + lunch + "\n\n" +
-                    "Dinner: " + dinner;
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return contentStr;
     }
 }
