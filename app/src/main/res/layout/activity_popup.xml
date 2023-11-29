@@ -27,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
+        android:textColor="@color/grey"
+        android:background="#5a7e8c"
         android:id="@+id/closePopupBtn"/>
 
 </LinearLayout>
