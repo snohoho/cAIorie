@@ -120,21 +120,26 @@
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#5a7e8c"
+        android:onClick="onSaveButtonClicked"
         android:text="@string/mealInSaveText"
+        android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762"
-        android:onClick="onSaveButtonClicked" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <Button
         android:id="@+id/buttonShowDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="58dp"
+        android:background="#5a7e8c"
         android:onClick="onShowDaysButtonClicked"
         android:text="@string/displayDaysActivityText"
+        android:textColor="@color/grey"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"

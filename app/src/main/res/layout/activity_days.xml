@@ -19,6 +19,8 @@
         android:id="@+id/mondayButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:background="#5a7e8c"
         android:text="Monday" />
 
     <Button
@@ -31,6 +33,8 @@
         android:id="@+id/wednesdayButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:background="#5a7e8c"
         android:text="Wednesday" />
 
     <Button
@@ -43,6 +47,8 @@
         android:id="@+id/fridayButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:background="#5a7e8c"
         android:text="Friday" />
 
     <Button
@@ -55,6 +61,8 @@
         android:id="@+id/sundayButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:background="#5a7e8c"
         android:text="Sunday" />
 
 
