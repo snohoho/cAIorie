@@ -15,6 +15,9 @@
     <string name="mealPlanBtText">Meal Plan</string>
     <string name="mealInBtText">Meal Input</string>
     <string name="profileText">Profile</string>
+    <string name="textTitle">Sample Questions:\n-What is a calorie?\n-How many calories in an egg?\n
+        -How to lose weight?\n-What is the keto diet?\n (Tap to close window)</string>
+
 
     <!--strings for meal input-->
     <string name="enterMealText">Enter Your Meal here:</string>
