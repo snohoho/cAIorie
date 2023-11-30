@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private Button homeButton;
+    private Button calcIntakeButton;
     SharedPreferences sp;
     String name;
     TextView nameView;
@@ -26,6 +27,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView restrictView;
     String weightGoal;
     TextView weightGoalView;
+    String calIntake;
+    TextView calIntakeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +41,14 @@ public class ProfileActivity extends AppCompatActivity {
         weightView = findViewById(R.id.weightPlaceholder);
         restrictView = findViewById(R.id.restrictionPlaceholder);
         weightGoalView = findViewById(R.id.goalPlaceholder);
+        calIntakeView = findViewById(R.id.calIntakePlaceholder);
 
         homeButton = findViewById(R.id.buttonHome);
+        calcIntakeButton = findViewById(R.id.buttonCalcIntake);
 
         sp = getSharedPreferences("userInputs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
         if(sp.getInt("pressed",0) == 1) {
             nameView.setText(sp.getString("name",""));
             ageView.setText(sp.getString("age",""));
@@ -49,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
             weightView.setText(sp.getString("weight",""));
             restrictView.setText(sp.getString("dietaryRestriction",""));
             weightGoalView.setText(sp.getString("weightGoal",""));
+            calIntakeView.setText(sp.getString("calIntake",""));
         }
 
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -60,12 +68,14 @@ public class ProfileActivity extends AppCompatActivity {
                 weight = weightView.getText().toString();
                 dietaryRestriction = restrictView.getText().toString();
                 weightGoal = weightGoalView.getText().toString();
+                calIntake = calIntakeView.getText().toString();
+
                 if (age.equals("") || height.equals("") || weight.equals(""))
                 {
                     Toast.makeText(getBaseContext(), "Please add age, height, and weight!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                SharedPreferences.Editor editor = sp.edit();
+
                 editor.putString("name",name);
                 editor.putString("age",age);
                 editor.putString("height",height);
@@ -78,6 +88,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Profile information saved.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        calcIntakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("calIntake",calIntake);
+                editor.apply();
             }
         });
     }
