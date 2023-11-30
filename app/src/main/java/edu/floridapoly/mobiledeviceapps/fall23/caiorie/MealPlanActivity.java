@@ -1,6 +1,8 @@
 package edu.floridapoly.mobiledeviceapps.fall23.caiorie;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,12 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -25,7 +26,6 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 public class MealPlanActivity extends AppCompatActivity {
-    private Button saveButton;
     String responseText;
     String parsedText;
 
@@ -40,15 +40,22 @@ public class MealPlanActivity extends AppCompatActivity {
     String height;
     String weight;
     String dietaryRestriction;
+    ProgressDialog progressDialog;
+    private Button buttonSendToAI;
+    private Button buttonHome;
+    ScrollView scrollView;
+    TextView textViewNoPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mealplan);
 
-        spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay0", Context.MODE_PRIVATE);
+        scrollView = findViewById(R.id.scrollView2);
+        textViewNoPlan = findViewById(R.id.textViewNoPlan);
 
         //initializes text views with previous plan if meal plan currently exists
+        spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay0", Context.MODE_PRIVATE);
         TextView changeText[] =
                 {findViewById(R.id.textViewMonday),
                         findViewById(R.id.textViewTuesday),
@@ -58,6 +65,8 @@ public class MealPlanActivity extends AppCompatActivity {
                         findViewById(R.id.textViewSaturday),
                         findViewById(R.id.textViewSunday)};
         if(spMealPlanOut.getInt("pressed",0) == 1) {
+            textViewNoPlan.setVisibility(View.INVISIBLE);
+            scrollView.setVisibility(View.VISIBLE);
             for(int i=0; i<changeText.length; i++) {
                 spMealPlanOut = getApplicationContext().getSharedPreferences("mealPlanOutDay" + i, Context.MODE_PRIVATE);
                 parsedText = "Breakfast\n" + spMealPlanOut.getString("breakfast","") +
@@ -66,41 +75,40 @@ public class MealPlanActivity extends AppCompatActivity {
                 changeText[i].setText(parsedText);
             }
         }
+        else {
+            textViewNoPlan.setVisibility(View.VISIBLE);
+            scrollView.setVisibility(View.INVISIBLE);
+        }
 
-        saveButton = findViewById(R.id.buttonSavePlan);
-        final Button buttonSendToAI = (Button) findViewById(R.id.buttonGeneratePlan);
-
-        /*
+        buttonSendToAI = findViewById(R.id.buttonGeneratePlan);
         spMealPlanIn = getApplicationContext().getSharedPreferences("userInputs", Context.MODE_PRIVATE);
-        spMealPlanIn.getString("age","");
-        spMealPlanIn.getString("height","");
-        spMealPlanIn.getString("weight","");
-        spMealPlanIn.getString("dietaryRestriction","");
-        */
-
-        age = "25";
-        height = "5'10";
-        weight = "180 lbs";
-        dietaryRestriction = "Nuts";
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "Saves the AI generated meal plan.",Toast.LENGTH_LONG).show();
-            }
-        });
+        age = spMealPlanIn.getString("age","25");
+        height = spMealPlanIn.getString("height","5'10");
+        weight = spMealPlanIn.getString("weight","180");
+        dietaryRestriction = spMealPlanIn.getString("dietaryRestriction","");
 
         buttonSendToAI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 String prompt = "I am " + age +
                         " years old, and have a height of " + height +
-                        " , and currently weigh " + weight +
-                        ". I cannot eat " + dietaryRestriction +
-                        ". Generate a meal plan for the week containing 3 meals per day, Monday through Sunday. Output in JSON format as meal_plan";
+                        " , and currently weigh " + weight + " lbs. ";
+                        if(dietaryRestriction != "") {
+                            prompt += "I cannot eat " + dietaryRestriction + ". ";
+                        }
+                        prompt += "Generate a meal plan for the week containing 3 meals per day, Monday through Sunday. Output in JSON format as meal_plan";
                 Log.i("WebService", "WebService URL: " + prompt);
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new MealPlanActivity.GetServerData().execute(prompt);
+            }
+        });
+
+        buttonHome = findViewById(R.id.buttonHome);
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MealPlanActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -109,6 +117,17 @@ public class MealPlanActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            progressDialog = new ProgressDialog(MealPlanActivity.this);
+            if(spMealPlanIn.getInt("pressed",0) == 0) {
+                progressDialog.setMessage("Generating meal plan...\n\n(Note: no data was entered in profile screen, default data will be used!)");
+            }
+            else {
+                progressDialog.setMessage("Generating meal plan...");
+
+            }
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -136,6 +155,12 @@ public class MealPlanActivity extends AppCompatActivity {
                         "\n\nLunch\n" + spMealPlanOut.getString("lunch","") +
                         "\n\nDinner\n" + spMealPlanOut.getString("dinner","");
                 changeText[i].setText(parsedText);
+            }
+
+            if(progressDialog.isShowing()) {
+                textViewNoPlan.setVisibility(View.INVISIBLE);
+                scrollView.setVisibility(View.VISIBLE);
+                progressDialog.dismiss();
             }
         }
     }

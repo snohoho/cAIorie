@@ -10,57 +10,68 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This week's plan:"
+        android:text="@string/mealPlanTitleText"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195"
-        />
+        app:layout_constraintVertical_bias="0.17000002" />
+
+    <TextView
+        android:id="@+id/textViewNoPlan"
+        android:layout_width="325dp"
+        android:layout_height="383dp"
+        android:text="@string/noPlanText"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.110000014" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="177dp"
-        android:layout_height="197dp"
+        android:layout_width="139dp"
+        android:layout_height="131dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/dumbell_app_clipart" />
-
-    <Button
-        android:id="@+id/buttonSavePlan"
-        android:layout_width="190dp"
-        android:layout_height="56dp"
-        android:text="Save Plan"
-        android:textColor="@color/grey"
-        android:background="#5a7e8c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893" />
+        app:srcCompat="@drawable/dumbell_app_clipart_cropped" />
 
     <Button
         android:id="@+id/buttonGeneratePlan"
         android:layout_width="190dp"
         android:layout_height="52dp"
+        android:background="#5a7e8c"
         android:text="Generate New Plan"
         android:textColor="@color/grey"
-        android:background="#5a7e8c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <Button
+        android:id="@+id/buttonHome"
+        android:layout_width="190dp"
+        android:layout_height="52dp"
+        android:background="#5a7e8c"
+        android:text="@string/homeBtText"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGeneratePlan" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="306dp"
         android:layout_height="395dp"
         android:layout_marginTop="32dp"
@@ -68,7 +79,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"

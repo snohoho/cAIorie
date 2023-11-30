@@ -7,27 +7,14 @@
     tools:context=".MealInputActivity">
 
     <TextView
-        android:id="@+id/mealNumText"
-        android:layout_width="132dp"
-        android:layout_height="32dp"
-        android:text="@string/mealInNumberText"
-        android:textAlignment="viewStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
-
-    <TextView
         android:id="@+id/enterMealPlanTitleText"
         android:layout_width="245dp"
         android:layout_height="66dp"
         android:text="@string/enterMealText"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,137 +23,170 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="159dp"
-        android:layout_height="149dp"
+        android:layout_width="144dp"
+        android:layout_height="129dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/dumbell_app_clipart" />
+        app:srcCompat="@drawable/dumbell_app_clipart_cropped" />
 
-    <TextView
-        android:id="@+id/DayChoiceText"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:text="@string/mealInDayText"
-        android:textAlignment="viewStart"
-        android:textSize="16sp"
+    <LinearLayout
+        android:id="@+id/layoutContainer"
+        android:layout_width="347dp"
+        android:layout_height="458dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.319" />
+        app:layout_constraintTop_toBottomOf="@+id/enterMealPlanTitleText"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/FoodTextView"
-        android:layout_width="71dp"
-        android:layout_height="31dp"
-        android:text="@string/mealInFoodText"
-        android:textAlignment="viewStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
+        <LinearLayout
+            android:id="@+id/dayLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/CalorieTextView"
-        android:layout_width="71dp"
-        android:layout_height="31dp"
-        android:text="@string/mealInCaloriesText"
-        android:textAlignment="viewStart"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+            <TextView
+                android:id="@+id/DayChoiceText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mealInDayText"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/editTextFood"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/mealInFoodHint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512" />
+            <Spinner
+                android:id="@+id/spinnerDays"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.4"
+                android:gravity="center_vertical" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextCalories"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/mealInCaloriesHint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        <LinearLayout
+            android:id="@+id/mealNumLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#5a7e8c"
-        android:onClick="onSaveButtonClicked"
-        android:text="@string/mealInSaveText"
-        android:textColor="@color/grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+            <TextView
+                android:id="@+id/mealNumText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mealInNumberText"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/buttonShowDays"
-        android:layout_width="125dp"
-        android:layout_height="58dp"
-        android:background="#5a7e8c"
-        android:onClick="onShowDaysButtonClicked"
-        android:text="@string/displayDaysActivityText"
-        android:textColor="@color/grey"
+            <Spinner
+                android:id="@+id/spinnerMeals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.4"
+                android:gravity="center_vertical" />
+        </LinearLayout>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        <LinearLayout
+            android:id="@+id/foodInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/spinnerDays"
-        android:layout_width="166dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.722"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
+            <TextView
+                android:id="@+id/FoodTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mealInFoodText"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/spinnerMeals"
-        android:layout_width="166dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.722"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+            <EditText
+                android:id="@+id/editTextFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/mealInFoodHint"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/CalorieTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mealInCaloriesText"
+                android:textAlignment="viewStart"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editTextCalories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/mealInCaloriesHint"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#5a7e8c"
+                android:onClick="onSaveButtonClicked"
+                android:text="@string/mealInSaveText"
+                android:textColor="@color/grey" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/buttonShowDays"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#5a7e8c"
+                android:onClick="onShowDaysButtonClicked"
+
+                android:text="@string/displayDaysActivityText"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
