@@ -1,5 +1,6 @@
 package edu.floridapoly.mobiledeviceapps.fall23.caiorie;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.AsyncTask;
@@ -14,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,8 +30,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-
 public class HomeActivity extends AppCompatActivity {
 
     private Button sampleQsButton;
@@ -46,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     String apiKey = "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";
     String model = "gpt-3.5-turbo-1106";
     String urlStr = "https://api.openai.com/v1/chat/completions";
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +131,10 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progressDialog = new ProgressDialog(HomeActivity.this);
+            progressDialog.setMessage("Fetching response...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -147,6 +150,10 @@ public class HomeActivity extends AppCompatActivity {
             textResponse.setText(responseText);
             TextView textParsed = findViewById(R.id.aiResponse);
             textParsed.setText(parsedText);
+
+            if(progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
         }
     }
 

@@ -66,6 +66,11 @@
     <string name="weightGoalIn">Enter Weight Goal</string>
     <string name="dietaryRestrictionText">Dietary Restrictions:</string>
     <string name="dietaryRestrictionIn">Enter Dietary Restrictions</string>
+
+    <string name="recommendedIntakeText">Recommended Calorie Intake:</string>
+    <string name="recommendedIntakeIn">Not calculated</string>
     <string name="homeBtText">Home</string>
+    <string name="calIntakeBtText">Calculate Intake</string>
+
 
 </resources>
