@@ -94,6 +94,49 @@ public class ProfileActivity extends AppCompatActivity {
         calcIntakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                weight = sp.getString("weight","");
+                height = sp.getString("height","");
+                age = sp.getString("age","");
+                weightGoal = sp.getString("weightGoal", "");
+
+                if (!age.equals("") && !height.equals("") && !weight.equals("")) {
+                    float w, h, h1, a, g;
+                    double y;
+                    int rounded;
+
+                    w = Float.parseFloat(weight);
+                    w *= 0.45359237;
+
+                    String[] hList = height.split("'");
+                    h = Float.parseFloat(hList[1]);
+                    h1 = Float.parseFloat(hList[0]);
+                    h += h1 * 12;
+                    h *= 2.54;
+
+                    a = Float.parseFloat(age);
+
+                    y = 66 + (13.7 * w) + (5 * h) + (6.8 * a);
+                    rounded = (int) Math.round(y);
+
+                    if(!weightGoal.equals("")) {
+                        w = Float.parseFloat(weight);
+                        g = Float.parseFloat(weightGoal);
+
+                        if (w > g) {
+                            rounded -= 500;
+                        }
+                        else if (w < g) {
+                            rounded += 500;
+                        }
+                    }
+
+                    calIntake = String.valueOf(rounded);
+                }
+
+                else {
+                    calIntake = "Not Calculated";
+                }
+
                 editor.putString("calIntake",calIntake);
                 editor.apply();
             }
