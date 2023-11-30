@@ -10,162 +10,119 @@
         android:id="@+id/editTextAskDum"
         android:layout_width="270dp"
         android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/askDummyHint"
         android:inputType="text"
         app:guidelineUseRtl="false"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
-
-    <Button
-        android:id="@+id/buttonSendToAI"
-        android:layout_width="125dp"
-        android:layout_height="53dp"
-        android:textColor="@color/grey"
-        android:background="#5a7e8c"
-        android:text="@string/sendQuestionsText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.755"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <Button
         android:id="@+id/buttonSampQuest"
-        android:layout_width="125dp"
-        android:layout_height="53dp"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="#5a7e8c"
         android:text="@string/sampleQuestionsText"
         android:textColor="@color/grey"
-        android:background="#5a7e8c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAskDum" />
+
+    <Button
+        android:id="@+id/buttonSendToAI"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:background="#5a7e8c"
+        android:text="@string/sendQuestionsText"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAskDum" />
 
     <ImageButton
         android:id="@+id/imageButtonMealPlan"
-        android:layout_width="89dp"
-        android:layout_height="81dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/imagebtn_bg"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995"
-        app:srcCompat="@drawable/triangle_removebg_preview" />
+        app:layout_constraintVertical_bias="0.96"
+        app:srcCompat="@drawable/mealplan_button_img"
+        app:tint="@color/grey" />
 
     <ImageButton
         android:id="@+id/imageButtonMealinput"
-        android:layout_width="89dp"
-        android:layout_height="81dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/imagebtn_bg"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonMealPlan"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995"
-        app:srcCompat="@drawable/triangle_removebg_preview" />
+        app:layout_constraintVertical_bias="0.96"
+        app:srcCompat="@drawable/mealinput_button_img"
+        app:tint="@color/grey" />
 
     <ImageButton
         android:id="@+id/imageButtonProfile"
-        android:layout_width="89dp"
-        android:layout_height="81dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="false"
+        android:background="@drawable/imagebtn_bg"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995"
-        app:srcCompat="@drawable/triangle_removebg_preview" />
-
-    <ImageView
-        android:id="@+id/imageViewTriangle3"
-        android:layout_width="62dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonProfile"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonProfile"
-        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toEndOf="@+id/imageButtonMealPlan"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
-        app:srcCompat="@drawable/_4883" />
+        app:layout_constraintVertical_bias="0.96"
+        app:srcCompat="@drawable/profile_button_image"
+        app:tint="@color/grey"
+        tools:srcCompat="@drawable/profile_button_image" />
 
     <ImageView
-        android:id="@+id/ImageViewTriangle2"
-        android:layout_width="62dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealPlan"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealPlan"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonMealinput"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
-        app:srcCompat="@drawable/_4883" />
-
-    <ImageView
-        android:id="@+id/ImageViewTriangle1"
-        android:layout_width="62dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealinput"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonMealinput"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonMealinput"
-        app:srcCompat="@drawable/_4883" />
-
-    <TextView
-        android:id="@+id/TextViewMealinput"
-        android:layout_width="66dp"
-        android:layout_height="18dp"
-        android:text="@string/mealInBtText"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealinput"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonMealinput"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-    <TextView
-        android:id="@+id/TextViewProfile"
-        android:layout_width="66dp"
-        android:layout_height="18dp"
-        android:text="@string/profileText"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonProfile"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonMealPlan"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-    <TextView
-        android:id="@+id/ImageViewMealPlan"
-        android:layout_width="66dp"
-        android:layout_height="18dp"
-        android:text="@string/mealPlanBtText"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonMealinput"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonMealPlan"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonMealinput"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984" />
-
-    <ScrollView
-        android:layout_width="281dp"
-        android:layout_height="256dp"
-        android:layout_marginBottom="36dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/editTextAskDum"
+        android:id="@+id/imageViewDummyTextbox"
+        android:layout_width="370dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ImageViewDummy"
-        app:layout_constraintVertical_bias="1.0">
+        app:srcCompat="@drawable/dummy_textbox" />
+
+    <ImageView
+        android:id="@+id/imageViewDummyTextboxTriangle"
+        android:layout_width="105dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewDummyTextbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/triangle" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="330dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="24dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageViewDummy">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -177,6 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/aiResponseText"
+                android:textColor="@color/grey"
                 android:textSize="40sp" />
 
         </LinearLayout>
@@ -193,5 +151,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.060000002"
         app:srcCompat="@drawable/dumbell_app_clipart_cropped" />
+
+    <TextView
+        android:id="@+id/textViewMealInBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="@string/mealInBtText"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMealPlanBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMealinput" />
+
+    <TextView
+        android:id="@+id/textViewMealPlanBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="@string/mealPlanBtText"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMealPlan" />
+
+    <TextView
+        android:id="@+id/textViewProfileBtn"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/profileText"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/textViewMealPlanBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
